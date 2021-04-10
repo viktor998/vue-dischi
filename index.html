@@ -9,7 +9,19 @@
 </head>
 <body>
     <div id="root">
-        <div class="card-container" v-for="(disco, key, i) in dischi">
+       <div class="left">
+        <select v-model="selected">
+            <option  >All </option>
+            <option v-for="gen in genre" > {{ gen }} </option>
+          </select>
+
+          <input type="checkbox" id="checkbox"  v-model="checked" v-model="toggle"
+          true-value="yes"
+          false-value="no" @click="sortF()" >
+       </div>
+
+       <div class="rigth">
+        <div v-if="(selected != 'All' )? selected == disco.genre: disco " v-else="(checked == 'no')"   class="card-container" v-for="(disco) in dischi">
             <div class="card" >
                 <div class="front" :style="`background-image: url('${disco.poster}');`">
                     
@@ -22,6 +34,7 @@
                 </div>
             </div>
         </div>
+       </div>
     </div>
 
 

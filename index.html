@@ -21,7 +21,7 @@
        </div>
 
        <div class="rigth">
-        <div v-if="(selected != 'All' )? selected == disco.genre: disco " v-else="(checked == 'no')"   class="card-container" v-for="(disco) in dischi">
+        <div v-if="(selected != 'All' )? selected == disco.genre: disco "    class="card-container" v-for="(disco) in dischi">
             <div class="card" >
                 <div class="front" :style="`background-image: url('${disco.poster}');`">
                     

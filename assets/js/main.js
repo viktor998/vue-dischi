@@ -4,7 +4,6 @@ var app = new Vue({
     el: '#root',
     data:{
         dischi: [],
-        dischiBu: [],
         selected:'All',
         checked: 'no',
         genre:[],
@@ -16,10 +15,7 @@ var app = new Vue({
         .then((response) => {
             
             this.dischi = response.data.response;
-            // this.dischiBu = JSON.parse(JSON.stringify(this.dischi));
-            // console.log(this.dischiBu);
-
-            
+              
             this.dischi.forEach((element) => {
                 
                 if(!this.genre.includes(element.genre)){
@@ -33,50 +29,11 @@ var app = new Vue({
     },
     methods: {
         sortF: function(){
-            
-            
-            
             this.dischi.sort((a, b) =>{
-                
-                if(this.checked === 'no'){
-                    if (a.year < b.year ){
-                    
-                        return -1;
-                        
-                        
-                    }
-                    if (a.year > b.year ){
-                        
-                        return 1;
-                        
-                        
-                    }
-
-                    return 0
-                    
-                    
-                }else if(this.checked === 'yes'){
-                    
-                    
-                    return this.dischiBu
-                } 
+                console.log(a)
+                return a.year - b.year;
                 
             })
-
-        //    let mapped = this.dischi.map((item) =>{
-        //        return item
-        //    });
-        //    mapped.sort((a, b) => {
-        //     if (a.year < b.year ){
-                
-        //         return -1;
-                                
-                                
-        //     }
-        //    })
-        //     this.dischiBu.push(mapped)
-        //     console.log(this.dischiBu)
-        // }
         }
     }
     

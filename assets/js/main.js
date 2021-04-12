@@ -5,9 +5,8 @@ var app = new Vue({
     data:{
         dischi: [],
         selected:'All',
-        checked: 'no',
+        checked: false,
         genre:[],
-        years:[],
         
     },    
     mounted(){
@@ -22,18 +21,25 @@ var app = new Vue({
                     this.genre.push(element.genre)
                     
                 }
-                this.years.push(element.year)
+                
                 
             }); 
+            
         });   
     },
     methods: {
         sortF: function(){
-            this.dischi.sort((a, b) =>{
-                console.log(a)
-                return a.year - b.year;
-                
-            })
+            this.checked = !this.checked;
+            if(this.checked){
+                console.log(this.checked)
+                this.dischi.sort((a, b) =>a.year - b.year)
+
+            }else{
+                axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+                .then((response) => {
+                    this.dischi = response.data.response;
+                });   
+            }
         }
     }
     

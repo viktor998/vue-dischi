@@ -24,6 +24,18 @@
     background-color: rgba(0, 0,0, .85);
 }
 
+.order{
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.order p{
+    margin-right: 5px;
+}
+
 .rigth{
     display: flex;
     flex-wrap: wrap;
